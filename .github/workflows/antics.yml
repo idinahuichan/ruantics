@@ -51,7 +51,7 @@ jobs:
     - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
-        [ "${{ github.event.inputs.rarfilename }}" ] && echo 'rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "'"${{ github.event.inputs.rarfilename }}"'" "$3"; bash mysteriousbashscript.sh "'"${{ github.event.inputs.rarfilename }}"'";' > wiebitte.sh || echo 'rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "$3.rar" "$3"; bash mysteriousbashscript.sh "$3.rar";' > wiebitte.sh
+        [ "${{ github.event.inputs.rarfilename }}" ] && echo 'rar/rar a -df -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "'"${{ github.event.inputs.rarfilename }}"'" "$3"; bash mysteriousbashscript.sh "'"${{ github.event.inputs.rarfilename }}"'";' > wiebitte.sh || echo 'rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "$3.rar" "$3"; bash mysteriousbashscript.sh "$3.rar";' > wiebitte.sh
         chmod +x wiebitte.sh
         cat wiebitte.sh
         ls -lh
