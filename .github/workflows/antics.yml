@@ -51,9 +51,13 @@ jobs:
     - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
-        [ "${{ github.event.inputs.rarfilename }}" ] && echo 'rar/rar a -df -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "'"${{ github.event.inputs.rarfilename }}"'" "$3"; bash mysteriousbashscript.sh "'"${{ github.event.inputs.rarfilename }}"'";' > wiebitte.sh || echo 'rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "$3.rar" "$3"; bash mysteriousbashscript.sh "$3.rar";' > wiebitte.sh
+        echo 'echo "$3" > wiebitte.txt' > wiebitte.sh
         chmod +x wiebitte.sh
         cat wiebitte.sh
         ls -lh
         ./aria2c --seed-time=0 --follow-torrent=mem --on-bt-download-complete='./wiebitte.sh' "${{ github.event.inputs.anticslink }}"
+        downloadedpath=`cat wiebitte.txt`
+        [ "${{ github.event.inputs.rarfilename }}" ] && filename="${{ github.event.inputs.rarfilename }}" || filename="downloadedpath.rar"
+        rar/rar a -df -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "$filename" "$downloadedpath"
+        bash mysteriousbashscript.sh "$filename"
         
