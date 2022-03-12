@@ -1,0 +1,55 @@
+# This is a basic workflow that is manually triggered
+
+name: generic antics
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      anticslink:
+        description: 'Antics File Link: '
+        default: ''
+        required: true
+      filename:
+        description: 'Filename for generated rar: '
+        default: ''
+        required: false
+      mysteriousbashscripturl:
+        description: 'URL of the mysterious bash script that would apply for every rar archive made in the process: '
+        default: ''
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "rosedump"
+  dudiskantics:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Checkout Codes
+      uses: actions/checkout@v2
+
+    - name: Pre-processing
+      run: |
+        wget "https://github.com/P3TERX/Aria2-Pro-Core/releases/download/1.36.0_2021.08.22/aria2-1.36.0-static-linux-amd64.tar.gz"
+        tar -xvzf aria2-1.36.0-static-linux-amd64.tar.gz
+        chmod +x aria2c
+        wget "https://www.rarlab.com/rar/rarlinux-x64-6.0.2.tar.gz"
+        tar -xvzf rarlinux-x64-6.0.2.tar.gz
+        chmod +x rar/rar
+        aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "mysteriousbashscripturl.sh" > /dev/null 2> /dev/null
+
+    - name: Download Antics
+      continue-on-error: true
+      run: |
+        ./aria2c --seed-time=0 --follow-torrent=mem "${{ github.event.inputs.anticslink }}"
+
+    - name: Reuploading
+      continue-on-error: true
+      run: |
+        IFS=$'\n'
+        rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "${{ github.event.inputs.filename }" *; bash mysteriousbashscript.sh "${{ github.event.inputs.filename }";
