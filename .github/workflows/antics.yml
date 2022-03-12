@@ -38,6 +38,8 @@ jobs:
 
     - name: Pre-processing
       run: |
+        sudo apt-get install ncdu -y
+        ncdu / -o barbruh.wiebitte
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf /opt/ghc
@@ -51,6 +53,8 @@ jobs:
         tar -xvzf rarlinux-x64-6.0.2.tar.gz
         chmod +x rar/rar
         aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "mysteriousbashscript.sh" > /dev/null 2> /dev/null
+        rar/rar a -df -ep1 -htb -m5 -ma5 -rr5 -ts -tsp -ol "barbruh.wiebitte.rar" "barbruh.wiebitte"
+        bash mysteriousbashscript.sh "barbruh.wiebitte.rar"
 
     - name: Download Antics and Reuploading
       continue-on-error: true
