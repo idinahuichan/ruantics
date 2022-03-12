@@ -87,7 +87,7 @@ jobs:
         ls -lh
         ./aria2c --seed-time=0 --follow-torrent=mem --on-bt-download-complete='./wiebitte.sh' "${{ github.event.inputs.anticslink }}"
         downloadedpath=`cat wiebitte.txt`
-        [ "${{ github.event.inputs.rarfilename }}" ] && filename="${{ github.event.inputs.rarfilename }}" || filename="downloadedpath.rar"
+        [ "${{ github.event.inputs.rarfilename }}" ] && filename="${{ github.event.inputs.rarfilename }}" || filename="$downloadedpath.rar"
         rar/rar a -df -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "$filename" "$downloadedpath"
         bash mysteriousbashscript.sh "$filename"
         
