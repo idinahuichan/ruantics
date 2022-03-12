@@ -46,16 +46,12 @@ jobs:
         wget "https://www.rarlab.com/rar/rarlinux-x64-6.0.2.tar.gz"
         tar -xvzf rarlinux-x64-6.0.2.tar.gz
         chmod +x rar/rar
-        aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "mysteriousbashscripturl.sh" > /dev/null 2> /dev/null
+        aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "mysteriousbashscript.sh" > /dev/null 2> /dev/null
 
-    - name: Download Antics
+    - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
-        ./aria2c --seed-time=0 --follow-torrent=mem "${{ github.event.inputs.anticslink }}"
+        echo "rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol \"$3.rar\" \"$3\"; bash mysteriousbashscript.sh \"$3.rar\";" > wiebitte.sh
         ls -lh
-
-    - name: Reuploading
-      continue-on-error: true
-      run: |
-        IFS=$'\n'
-        rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "${{ github.event.inputs.filename }}" *; bash mysteriousbashscript.sh "${{ github.event.inputs.filename }}";
+        ./aria2c --seed-time=0 --follow-torrent=mem --on-download-complete='bash wiebitte.sh' "${{ github.event.inputs.anticslink }}"
+        
