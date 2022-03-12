@@ -46,7 +46,8 @@ jobs:
     - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
-        echo "rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol \"$3.rar\" \"$3\"; bash mysteriousbashscript.sh \"$3.rar\";" > /tmp/wiebitte.sh
+        echo "rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol \"$3.rar\" \"$3\"; bash mysteriousbashscript.sh \"$3.rar\";" > wiebitte.sh
+        chmod +x wiebitte.sh
         ls -lh
-        ./aria2c --seed-time=0 --follow-torrent=mem --on-download-complete='bash /tmp/wiebitte.sh' "${{ github.event.inputs.anticslink }}"
+        ./aria2c --seed-time=0 --follow-torrent=mem --on-download-complete='./wiebitte.sh' "${{ github.event.inputs.anticslink }}"
         
