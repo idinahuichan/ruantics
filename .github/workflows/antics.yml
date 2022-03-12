@@ -43,23 +43,6 @@ jobs:
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf /opt/ghc
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/local/share/boost"
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/local/.ghcup"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/local/julia1.7.2"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/local/aws"*
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/lib/jvm"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/lib/x86_64-linux-gnu"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/lib/google-cloud-sdk"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/lib/llvm"*
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/lib/gcc"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/lib/firefox"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/lib/mono"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/share/swift"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/share/miniconda"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/share/az_7.1.0"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/opt/az"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/opt/pipx"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/opt/hhvm"
-        [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/opt/google"
         sudo apt-get install ncdu -y
         ncdu / -o barbruh.wiebitte
         df -lh
