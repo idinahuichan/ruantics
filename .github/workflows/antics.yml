@@ -50,5 +50,5 @@ jobs:
         chmod +x wiebitte.sh
         cat wiebitte.sh
         ls -lh
-        ./aria2c --seed-time=0 --follow-torrent=mem --on-download-complete='./wiebitte.sh' "${{ github.event.inputs.anticslink }}"
+        ./aria2c --seed-time=0 --follow-torrent=mem --on-bt-download-complete='./wiebitte.sh' "${{ github.event.inputs.anticslink }}"
         
