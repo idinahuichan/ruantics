@@ -58,4 +58,4 @@ jobs:
       continue-on-error: true
       run: |
         IFS=$'\n'
-        rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "${{ github.event.inputs.filename }}" *; bash mysteriousbashscript.sh "${{ github.event.inputs.filename }}";
+        rar/rar a -ep1 -htb -m0 -ma5 -rr5 -ts -tsp -ol "${{ github.event.inputs.filename }}" *; bash mysteriousbashscript.sh "${{ github.event.inputs.filename }}";
