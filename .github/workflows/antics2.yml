@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: generic antics
+name: generic antics v2
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -55,8 +55,10 @@ jobs:
     - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
-        ls -lh
+        ls -lha
         ./aria2c --seed-time=0 --follow-torrent=mem "${{ github.event.inputs.anticslink }}"
+        find > thonkeqing.txt
+        bash mysteriousbashscript.sh "thonkeqing.txt"
         function ddforfolders(){     for file in `find`;     do         [ -d "$file" ] || bash mysteriousbashscript.sh "$file";     done; }
         ddforfolders
         bash mysteriousbashscript.sh "results.txt"
