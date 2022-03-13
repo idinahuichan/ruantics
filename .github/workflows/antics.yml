@@ -43,8 +43,6 @@ jobs:
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf /opt/ghc
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/local/share/boost"
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-        sudo apt-get install ncdu -y
-        ncdu / -o barbruh.wiebitte
         df -lh
         wget "https://github.com/P3TERX/Aria2-Pro-Core/releases/download/1.36.0_2021.08.22/aria2-1.36.0-static-linux-amd64.tar.gz"
         tar -xvzf aria2-1.36.0-static-linux-amd64.tar.gz
@@ -53,8 +51,6 @@ jobs:
         tar -xvzf rarlinux-x64-6.0.2.tar.gz
         chmod +x rar/rar
         aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "mysteriousbashscript.sh" > /dev/null 2> /dev/null
-        rar/rar a -df -ep1 -htb -m5 -ma5 -rr5 -ts -tsp -ol "barbruh.wiebitte.rar" "barbruh.wiebitte"
-        bash mysteriousbashscript.sh "barbruh.wiebitte.rar"
 
     - name: Download Antics and Reuploading
       continue-on-error: true
