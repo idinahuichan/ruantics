@@ -55,6 +55,7 @@ jobs:
     - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
+        IFS=$'\n'
         ls -lha
         ./aria2c --seed-time=0 --follow-torrent=mem "${{ github.event.inputs.anticslink }}"
         find > thonkeqing.txt
