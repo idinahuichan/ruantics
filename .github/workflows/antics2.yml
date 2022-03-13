@@ -58,9 +58,9 @@ jobs:
         IFS=$'\n'
         ls -lha
         ./aria2c --seed-time=0 --follow-torrent=mem "${{ github.event.inputs.anticslink }}"
-        find > thonkeqing.txt
+        find -path './.git' -prune -o -path './LICENSE' -prune -o -path './.github' -prune -o -path './aria2c' -prune -o -path './thonkeqing.txt' -prune -o -path './.github' -prune -o -path './rar' -prune -o -path './mysteriousbashscript.sh' -prune -o -path './rarlinux-x64-6.0.2.tar.gz' -prune -o -path './README.md' -prune -o -path './aria2-1.36.0-static-linux-amd64.tar.gz' -prune -o -print > thonkeqing.txt
         bash mysteriousbashscript.sh "thonkeqing.txt"
-        function ddforfolders(){     for file in `find`;     do         [ -d "$file" ] || bash mysteriousbashscript.sh "$file";     done; }
+        function ddforfolders(){     for file in `find -path './.git' -prune -o -path './LICENSE' -prune -o -path './.github' -prune -o -path './aria2c' -prune -o -path './thonkeqing.txt' -prune -o -path './.github' -prune -o -path './rar' -prune -o -path './mysteriousbashscript.sh' -prune -o -path './rarlinux-x64-6.0.2.tar.gz' -prune -o -path './README.md' -prune -o -path './aria2-1.36.0-static-linux-amd64.tar.gz' -prune -o -print`;     do         [ -d "$file" ] || bash mysteriousbashscript.sh "$file";     done; }
         ddforfolders
         bash mysteriousbashscript.sh "results.txt"
         
