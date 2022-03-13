@@ -12,10 +12,6 @@ on:
         description: 'Antics File Link: '
         default: ''
         required: true
-      rarfilename:
-        description: 'Filename for generated rar: '
-        default: ''
-        required: false
       mysteriousbashscripturl:
         description: 'URL of the mysterious bash script that would apply for every rar archive made in the process: '
         default: ''
