@@ -63,4 +63,5 @@ jobs:
         ./aria2c --seed-time=0 --follow-torrent=mem "${{ github.event.inputs.anticslink }}"
         function ddforfolders(){     for file in `find`;     do         [ -d "$file" ] || bash mysteriousbashscript.sh "$file";     done; }
         ddforfolders
+        bash mysteriousbashscript.sh "results.txt"
         
