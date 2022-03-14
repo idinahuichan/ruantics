@@ -62,5 +62,5 @@ jobs:
         ddforfolders
         resultfilename="results.txt"
         [ "${{ github.event.inputs.resultfilename }}" ] && resultfilename="${{ github.event.inputs.resultfilename }}.results.txt"
-        mv "results.txt" "$resultfilename"
+        [ "$resultfilename" == "results.txt" ] && mv "results.txt" "$resultfilename"
         bash mysteriousbashscript.sh "$resultfilename"
