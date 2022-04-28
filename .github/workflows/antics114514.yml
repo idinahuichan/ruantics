@@ -54,4 +54,6 @@ jobs:
       run: |
         IFS=$'\n'
         ls -lha
-        bash thonkeqing.sh list
+        bash thonkeqing.sh
+        ls -lha
+        
