@@ -46,7 +46,7 @@ jobs:
         wget "https://www.rarlab.com/rar/rarlinux-x64-6.0.2.tar.gz"
         tar -xvzf rarlinux-x64-6.0.2.tar.gz
         chmod +x rar/rar
-        aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "mysteriousbashscript.sh" > /dev/null 2> /dev/null
+        aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "wiebitte.sh" > /dev/null 2> /dev/null
         aria2c "${{ github.event.inputs.anticslink }}" --out "list" > /dev/null 2> /dev/null
 
     - name: Download Antics and Reuploading
@@ -54,4 +54,4 @@ jobs:
       run: |
         IFS=$'\n'
         ls -lha
-        bash mysteriousbashscript.sh list
+        bash wiebitte.sh list
