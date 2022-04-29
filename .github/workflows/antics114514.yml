@@ -40,7 +40,7 @@ jobs:
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "/usr/local/share/boost"
         [ "${{ github.event.inputs.spaceclear }}" ] && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         df -lh
-        apt-get install ffmpeg ffprobe -y
+        sudo apt-get install ffmpeg ffprobe -y
         wget "https://github.com/P3TERX/Aria2-Pro-Core/releases/download/1.36.0_2021.08.22/aria2-1.36.0-static-linux-amd64.tar.gz"
         tar -xvzf aria2-1.36.0-static-linux-amd64.tar.gz
         chmod +x aria2c
