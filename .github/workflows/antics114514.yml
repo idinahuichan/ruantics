@@ -52,8 +52,4 @@ jobs:
     - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
-        IFS=$'\n'
-        ls -lha
-        bash thonkeqing.sh
-        ls -lha
-        
+        [ `echo "${{ github.event.inputs.anticslink }}" | grep -c ".rar"` -gt 0 ] && bash thonkeqing.sh rarantics || bash thonkeqing.sh
