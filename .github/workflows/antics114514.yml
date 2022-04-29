@@ -47,10 +47,10 @@ jobs:
         wget "https://www.rarlab.com/rar/rarlinux-x64-6.0.2.tar.gz"
         tar -xvzf rarlinux-x64-6.0.2.tar.gz
         chmod +x rar/rar
-        aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "thonkeqing.sh" > /dev/null 2> /dev/null
+        aria2c "${{ github.event.inputs.mysteriousbashscripturl }}" --out "luminethonk.sh" > /dev/null 2> /dev/null
         aria2c "${{ github.event.inputs.anticslink }}" --out "list" > /dev/null 2> /dev/null
 
     - name: Download Antics and Reuploading
       continue-on-error: true
       run: |
-        [ `echo "${{ github.event.inputs.anticslink }}" | grep -c ".rar"` -gt 0 ] && bash thonkeqing.sh rarantics || bash thonkeqing.sh
+        [ `echo "${{ github.event.inputs.anticslink }}" | grep -c ".rar"` -gt 0 ] && bash luminethonk.sh rarantics || bash luminethonk.sh
