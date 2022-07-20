@@ -58,4 +58,4 @@ jobs:
         bash thonkeqing.sh; rm thonkeqing.sh -f;
         rm './LICENSE' './.github' './.git' './aria2c' './thonkeqing.txt' './.github' './rar' './rarlinux-x64-6.0.2.tar.gz' './README.md' './aria2-1.36.0-static-linux-amd64.tar.gz' -rf
         ls -lha
-        pwd114514=${PWD##*/}; mv mysteriousbashscript.sh ..; cd ..; bash mysteriousbashscript.sh "$pwd114514"
+        pwd114514=${PWD##*/}; mv mysteriousbashscript.sh ..; cd ..; [ "${{ github.event.inputs.mysteriouswebhookurl }}" ] && bash mysteriousbashscript.sh "$pwd114514" "${{ github.event.inputs.mysteriouswebhookurl }}" || bash mysteriousbashscript.sh "$pwd114514"
